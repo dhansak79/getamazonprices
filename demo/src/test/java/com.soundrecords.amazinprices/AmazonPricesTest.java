@@ -23,18 +23,23 @@ public class AmazonPricesTest {
         Playwright playwright = Playwright.create();
         Browser browser = playwright.webkit().launch();
         Page page = browser.newPage();
-        try {
-            for (String asin : asins) {
+        page.setDefaultTimeout(10000);
 
+        for (String asin : asins) {
+            try {
                 page.navigate("https://www.amazon.co.uk/dp/" + asin);
                 String priceWhole = page.locator("xpath=" +
                         "//*[@id=\"corePriceDisplay_desktop_feature_div\"]/div[1]/span[1]"
                 ).first().textContent();
                 // Print the extracted price
-                System.out.println(asin + "," + priceWhole);
+                System.out.println(asin + "," +
+                        priceWhole
+                                .split("£")[1]
+                                .split(" ")[0]
+                );
+            } catch (Exception e) {
+                //do nothing
             }
-        } catch (Exception e) {
-
         }
     }
 }
