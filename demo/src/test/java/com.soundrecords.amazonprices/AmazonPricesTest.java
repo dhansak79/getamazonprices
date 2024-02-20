@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class AmazonPricesTest {
 
     @Test
-    public void getAmazonPrices() throws IOException {
+    public void getAmazonPricesTest() throws IOException {
         List<String> asins;
         try (Stream<String> lines = Files.lines(Paths.get("src/test/resources/asins.txt"))) {
             asins = lines.collect(Collectors.toList());
