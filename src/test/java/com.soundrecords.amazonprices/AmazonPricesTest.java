@@ -1,4 +1,4 @@
-package com.soundrecords.amazinprices;
+package com.soundrecords.amazonprices;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
