@@ -21,11 +21,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+    - uses: microsoft/playwright-github-action@v1
+    - name: Download drivers
+      shell: bash
+      run: scripts/download_driver_for_all_platforms.sh
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
